@@ -1,5 +1,15 @@
 /* global algoliasearch instantsearch */
 
+// Copy command to clipboard
+const updateClipboard = id => {
+  clipboard.writeText(
+    `python speedtest.py --server ${id}`
+  ).then(function() {
+  }, function(err) {
+    alert(err);
+  });
+}
+
 // Remove URL protocol
 const removeProto = url => url.replace(/(^\w+:|^)\/\//, '').replace(/\/$/, '');
 
@@ -55,8 +65,8 @@ search.addWidget(
         return `
           <h1>
             <span
-              title="${item.cc}"
-              class="flag-icon flag-icon-${item.cc.toLowerCase()}"
+              data-tippy-content="${item.cc}"
+              class="flag-icon flag-icon-${item.cc.toLowerCase()} tooltip"
             ></span>
             <a href="${item.url}" target="_blank" ref="noopener noreferer">
               ${name}, ${country}
@@ -66,14 +76,21 @@ search.addWidget(
           <div class="href">${item.host}</div>
           <div class="meta">
             <div class="cord">
-              <a
+              <a class="tooltip"
                 href="https://www.google.com/maps/search/${cord}"
+                data-tippy-content="View in Google Maps"
                 target="_blank" ref="noopener noreferer"
               >
-                ${cord}
+                ${item.lat}, ${item.lon}
               </a>
             </div>
-            <span class="id"><span class="no-sign">#</span>${id}</span>
+            <span class="id tooltip"
+              data-tippy-trigger="click"
+              data-tippy-content="Copied to clipboard"
+              data-id="${id}"
+            >
+              <i class="no-sign">#</i>${id}
+            </span>
           </div>
         `;
       },
@@ -88,3 +105,28 @@ search.addWidget(
 );
 
 search.start();
+
+// Init Tippy tooltips
+tippy.setDefaults({
+  arrow: true,
+  arrowType: 'round',
+  animateFill: false,
+  animation: 'shift-toward',
+  theme: 'light',
+  delay: [50, 50],
+});
+tippy('.tooltip');
+
+// Events
+search.on('render', () => {
+  let result_ids = document.querySelectorAll('.id');
+
+  result_ids.forEach(el => {
+    tippy('.tooltip');
+
+    el.addEventListener('click', e => {
+      e.preventDefault();
+      updateClipboard(el.dataset.id);
+    });
+  })
+});

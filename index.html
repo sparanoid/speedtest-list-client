@@ -11,7 +11,7 @@
 
   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7/themes/algolia-min.css"> -->
   <link rel="stylesheet" href="https://experiments.sparanoid.net/unpkg/root-variables">
-  <link rel="stylesheet" href="https://experiments.sparanoid.net/jsd/npm/flag-icon-css/css/flag-icon.min.css">
+  <link rel="stylesheet" href="https://experiments.sparanoid.net/unpkg/flag-icon-css/css/flag-icon.min.css">
   <link rel="stylesheet" href="./src/app.css">
   <link rel="stylesheet" href="./src/index.css">
 
@@ -35,8 +35,8 @@
 
   <div>
     <p>How to use it with <a href="https://github.com/sivel/speedtest-cli">speedtest-cli</a>: search for the node you need, remember the <b>Server ID</b> and execute the following command:</p>
-    <pre>curl -Lo speedtest-cli https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
-chmod +x speedtest-cli
+    <pre>curl -LO https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
+chmod +x speedtest.py
 python speedtest.py --server SERVER_ID</pre>
   </div>
 
@@ -52,7 +52,10 @@ python speedtest.py --server SERVER_ID</pre>
   </div>
 
   <script src="https://experiments.sparanoid.net/algolia.js"></script>
-  <script src="https://experiments.sparanoid.net/jsd/npm/instantsearch.js"></script>
+  <script src="https://experiments.sparanoid.net/unpkg/instantsearch.js"></script>
+  <script src="https://experiments.sparanoid.net/unpkg/clipboard-polyfill"></script>
+  <script src="https://experiments.sparanoid.net/unpkg/popper.js@1/dist/umd/popper.min.js"></script>
+  <script src="https://experiments.sparanoid.net/unpkg/tippy.js@4"></script>
   <script src="./src/app.js"></script>
 </body>
 

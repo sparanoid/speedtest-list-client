@@ -151,11 +151,22 @@ mark,
   padding: 0 .4rem;
   margin: 4px 0;
   border-radius: 4px;
+  cursor: pointer;
+}
+
+.ais-Hits-item .id:hover {
+  color: var(--link-color);
+}
+
+.ais-Hits-item .id:focus {
+  color: var(--link-color);
+  box-shadow: 0 0 0 1px var(--link-color);
 }
 
 .ais-Hits-item .id .no-sign {
   opacity: .5;
   user-select: none;
+  font-style: normal;
 }
 
 /* Pagination */
