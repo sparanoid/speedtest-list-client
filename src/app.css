@@ -1,6 +1,20 @@
 /* Reset :root */
 :root {
   --font-size: 14px;
+
+  --text-color-h: 235;
+  --text-color-s: 12%;
+  --text-color-l: 90%;
+
+  --link-color-h: 190;
+  --link-color-s: 100%;
+  --link-color-l: 55%;
+
+  --bg-color-h: 237;
+  --bg-color-s: 31%;
+  --bg-color-l: 11%;
+
+  --code-color-h: 40;
 }
 
 /*
@@ -13,7 +27,8 @@ body {
   font-family: var(--fontstack-prefix) var(--fontstack-sans-serif);
   font-size: var(--font-size);
   line-height: var(--line-height);
-  padding: var(--space-xs);
+  padding: var(--space-sm);
+  margin: 0;
   background: var(--bg-color);
   font-feature-settings: var(--font-features);
   text-size-adjust: none;
@@ -36,27 +51,29 @@ code {
   color: var(--code-color);
 }
 
-.flex {
-  display: flex;
-}
-
-.flex > div {
-  flex: 1;
-  height: calc(100vw / 13);
-}
-
-.background-wrap {
-  padding: var(--space-xs);
-  margin: calc(var(--space-xs) * -1);
-  background: var(--text-color-50);
-}
-
 a {
   color: var(--link-color);
   font-weight: bold;
   text-decoration: none;
+  background-image: linear-gradient(to right, #2de3d1, #18bdfe);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+
 }
 
 a:hover {
   color: var(--link-color-light);
+}
+
+input,
+button {
+  color: var(--text-color);
+  transition: box-shadow .2s ease;
+}
+
+input:focus,
+button:focus {
+  box-shadow: 0 0 0 .15em var(--link-color-20);
 }

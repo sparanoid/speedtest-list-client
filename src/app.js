@@ -1,7 +1,4 @@
-/* global algoliasearch instantsearch dayjs dayjs_plugin_relativeTime */
-
-// Day.js and its plugin
-dayjs.extend(dayjs_plugin_relativeTime);
+/* global algoliasearch instantsearch */
 
 // Remove URL protocol
 const removeProto = url => url.replace(/(^\w+:|^)\/\//, '').replace(/\/$/, '');
@@ -24,6 +21,7 @@ const search = instantsearch({
 search.addWidget(
   instantsearch.widgets.searchBox({
     container: '#searchbox',
+    placeholder: 'Search for node…'
   })
 );
 
@@ -32,45 +30,51 @@ search.addWidget(
     container: '#hits',
     templates: {
       item: item => {
-        const description =
-          item._highlightResult && item._highlightResult.description
-            ? item._highlightResult.description.value
-            : item.description;
+        const name =
+          item._highlightResult && item._highlightResult.name
+            ? item._highlightResult.name.value
+            : item.name;
 
-        const href =
-          item._highlightResult && item._highlightResult.href
-            ? removeProto(item._highlightResult.href.value)
-            : removeProto(item.href);
+        const country =
+          item._highlightResult && item._highlightResult.country
+            ? item._highlightResult.country.value
+            : item.country;
 
-        const extended =
-          item._snippetResult && item._snippetResult.extended
-            ? item._snippetResult.extended.value
-            : item.extended;
+        const sponsor =
+          item._highlightResult && item._highlightResult.sponsor
+            ? item._highlightResult.sponsor.value
+            : item.sponsor;
 
-        const time = dayjs().from(dayjs(item.time));
+        const id =
+          item._highlightResult && item._highlightResult.id
+            ? item._highlightResult.id.value
+            : item.id;
 
-        const tags =
-          (item.tags &&
-            `<div class="tags">${item.tags
-              .split(' ')
-              .map(tag => `<span class="tag">${tag}</span>`)
-              .join('')}</div>`) ||
-          '';
+        const cord = `${item.lat},${item.lon}`;
 
         return `
-          <article>
-            <h1>
-              <a href="${item.href}" target="_blank" ref="noopener noreferer">
-                ${description}
+          <h1>
+            <span
+              title="${item.cc}"
+              class="flag-icon flag-icon-${item.cc.toLowerCase()}"
+            ></span>
+            <a href="${item.url}" target="_blank" ref="noopener noreferer">
+              ${name}, ${country}
+            </a>
+          </h1>
+          <div class="sponsor">${sponsor}</div>
+          <div class="href">${item.host}</div>
+          <div class="meta">
+            <div class="cord">
+              <a
+                href="https://www.google.com/maps/search/${cord}"
+                target="_blank" ref="noopener noreferer"
+              >
+                ${cord}
               </a>
-            </h1>
-            <div class="href">${href}</div>
-            <div class="extended">${extended}</div>
-            <div class="meta">
-              <div class="time" title="${item.time}">${time}</div>
-              <div class="tags">${tags}</div>
             </div>
-          </article>
+            <span class="id">#${id}</span>
+          </div>
         `;
       },
     },

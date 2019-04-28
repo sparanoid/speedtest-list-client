@@ -11,6 +11,7 @@
 
   <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7/themes/algolia-min.css"> -->
   <link rel="stylesheet" href="https://experiments.sparanoid.net/unpkg/root-variables">
+  <link rel="stylesheet" href="https://experiments.sparanoid.net/jsd/npm/flag-icon-css/css/flag-icon.min.css">
   <link rel="stylesheet" href="./src/app.css">
   <link rel="stylesheet" href="./src/index.css">
 
@@ -20,15 +21,26 @@
 <body>
   <header class="header">
     <h1 class="header-title">
-      <a href="/">speedtest-list-client</a>
+      <a href="/">SpeedTest.net Server List</a>
     </h1>
     <p class="header-subtitle">
-      using
+      Created by
+      <a href="https://sparanoid.com">Sparanoid</a>,
+      powered by
       <a href="https://github.com/algolia/instantsearch.js">
         InstantSearch.js
       </a>
     </p>
   </header>
+
+  <div>
+    <p>How to use it with <a href="https://github.com/sivel/speedtest-cli">speedtest-cli</a>: search for the node you need, remember the <b>Server ID</b> and execute the following command:</p>
+    <pre>
+curl -Lo speedtest-cli https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
+chmod +x speedtest-cli
+python speedtest.py --server SERVER_ID
+    </pre>
+  </div>
 
   <div class="container">
     <div class="search-panel">
@@ -43,8 +55,6 @@
 
   <script src="https://experiments.sparanoid.net/algolia.js"></script>
   <script src="https://experiments.sparanoid.net/jsd/npm/instantsearch.js"></script>
-  <script src="https://experiments.sparanoid.net/unpkg/dayjs" ></script>
-  <script src="https://experiments.sparanoid.net/unpkg/dayjs/plugin/relativeTime" ></script>
   <script src="./src/app.js"></script>
 </body>
 
