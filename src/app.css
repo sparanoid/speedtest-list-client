@@ -78,6 +78,7 @@ a:hover {
 
 input,
 button {
+  font-family: inherit;
   color: var(--text-color);
   transition: box-shadow .2s ease;
 }
