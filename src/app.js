@@ -73,7 +73,7 @@ search.addWidget(
                 ${cord}
               </a>
             </div>
-            <span class="id">#${id}</span>
+            <span class="id"><span class="no-sign">#</span>${id}</span>
           </div>
         `;
       },

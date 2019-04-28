@@ -51,6 +51,15 @@ code {
   color: var(--code-color);
 }
 
+pre {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--code-color-5);
+  padding: .6em var(--space-sm);
+  margin-left: calc(var(--space-sm) * -1);
+  margin-right: calc(var(--space-sm) * -1);
+}
+
 a {
   color: var(--link-color);
   font-weight: bold;

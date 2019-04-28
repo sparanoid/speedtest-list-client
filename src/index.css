@@ -153,6 +153,11 @@ mark,
   border-radius: 4px;
 }
 
+.ais-Hits-item .id .no-sign {
+  opacity: .5;
+  user-select: none;
+}
+
 /* Pagination */
 .ais-Pagination {
 
