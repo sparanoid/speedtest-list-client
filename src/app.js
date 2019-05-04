@@ -1,18 +1,16 @@
-/* global algoliasearch instantsearch */
+/* global algoliasearch instantsearch clipboard tippy */
 
 // Copy command to clipboard
 const updateClipboard = id => {
-  clipboard.writeText(
-    `python speedtest.py --server ${id}`
-  ).then(function() {
-  }, function(err) {
-    alert(err);
-  });
-}
+  clipboard.writeText(`python speedtest.py --server ${id}`).then(
+    function() {},
+    function(err) {
+      throw err;
+    }
+  );
+};
 
 // Remove URL protocol
-const removeProto = url => url.replace(/(^\w+:|^)\/\//, '').replace(/\/$/, '');
-
 const searchClient = algoliasearch(
   process.env.ALGOLIA_APP_ID,
   process.env.ALGOLIA_SEARCH_KEY
@@ -31,7 +29,7 @@ const search = instantsearch({
 search.addWidget(
   instantsearch.widgets.searchBox({
     container: '#searchbox',
-    placeholder: 'Search for node…'
+    placeholder: 'Search for node…',
   })
 );
 
@@ -119,14 +117,14 @@ tippy('.tooltip');
 
 // Events
 search.on('render', () => {
-  let result_ids = document.querySelectorAll('.id');
+  const resultId = document.querySelectorAll('.id');
 
-  result_ids.forEach(el => {
+  resultId.forEach(el => {
     tippy('.tooltip');
 
     el.addEventListener('click', e => {
       e.preventDefault();
       updateClipboard(el.dataset.id);
     });
-  })
+  });
 });
