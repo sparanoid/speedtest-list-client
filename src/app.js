@@ -54,11 +54,11 @@ search.addWidget(
             : item.sponsor;
 
         const id =
-          item._highlightResult && item._highlightResult.id
-            ? item._highlightResult.id.value
-            : item.id;
+          item._highlightResult && item._highlightResult.objectID
+            ? item._highlightResult.objectID.value
+            : item.objectID;
 
-        const cord = `${item.lat},${item.lon}`;
+        const cord = `${item._geoloc.lat},${item._geoloc.lon}`;
 
         return `
           <h1>
@@ -79,7 +79,7 @@ search.addWidget(
                 data-tippy-content="View in Google Maps"
                 target="_blank" ref="noopener noreferer"
               >
-                ${item.lat}, ${item.lon}
+                ${item._geoloc.lat}, ${item._geoloc.lon}
               </a>
             </div>
             <span class="id tooltip"
