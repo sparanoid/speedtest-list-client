@@ -66,7 +66,7 @@ search.addWidget(
               data-tippy-content="${item.cc}"
               class="flag-icon flag-icon-${item.cc.toLowerCase()} tooltip"
             ></span>
-            <a href="${item.url}" title="${item.host}" target="_blank" ref="noopener noreferer">
+            <a href="${item.url}" target="_blank" ref="noopener noreferer">
               ${name}, ${country}
             </a>
           </h1>
