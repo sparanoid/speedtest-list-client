@@ -1,3 +1,8 @@
+.header-title {
+  font-size: 2em;
+  margin: 0;
+}
+
 /* Wrapper layout */
 .search-panel__results {
   display: grid;
