@@ -22,7 +22,9 @@ const search = instantsearch({
     facetingAfterDistinct: true,
     attributesToSnippet: ['extended:40'],
   },
-  routing: true,
+  routing: {
+    stateMapping: instantsearch.stateMappings.singleIndex('list')
+  },
   searchClient,
 });
 
