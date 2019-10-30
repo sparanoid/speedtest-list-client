@@ -66,12 +66,11 @@ search.addWidget(
               data-tippy-content="${item.cc}"
               class="flag-icon flag-icon-${item.cc.toLowerCase()} tooltip"
             ></span>
-            <a href="${item.url}" target="_blank" ref="noopener noreferer">
+            <a href="${item.url}" title="${item.host}" target="_blank" ref="noopener noreferer">
               ${name}, ${country}
             </a>
           </h1>
           <div class="sponsor">${sponsor}</div>
-          <div class="href">${item.host}</div>
           <div class="meta">
             <div class="cord">
               <a class="tooltip"
@@ -99,6 +98,26 @@ search.addWidget(
 search.addWidget(
   instantsearch.widgets.pagination({
     container: '#pagination',
+  })
+);
+
+search.addWidget(
+  instantsearch.widgets.refinementList({
+    container: '#refinement-list',
+    attribute: 'country',
+    operator: 'and',
+    limit: 10,
+    showMore: true,
+    showMoreLimit: 30,
+    // Make sure add `searchable(_tags)` to `attributesForFaceting`
+    searchable: true,
+    searchablePlaceholder: 'Search countries',
+  })
+);
+
+search.addWidget(
+  instantsearch.widgets.stats({
+    container: '#search-stats',
   })
 );
 

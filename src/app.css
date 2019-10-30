@@ -27,8 +27,7 @@ body {
   font-family: var(--fontstack-prefix) var(--fontstack-sans-serif);
   font-size: var(--font-size);
   line-height: var(--line-height);
-  padding: var(--space-sm);
-  margin: 0;
+  padding: var(--space-xs);
   background: var(--bg-color);
   font-feature-settings: var(--font-features);
   text-size-adjust: none;
@@ -51,13 +50,19 @@ code {
   color: var(--code-color);
 }
 
-pre {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  background: var(--code-color-5);
-  padding: .6em var(--space-sm);
-  margin-left: calc(var(--space-sm) * -1);
-  margin-right: calc(var(--space-sm) * -1);
+.flex {
+  display: flex;
+}
+
+.flex > div {
+  flex: 1;
+  height: calc(100vw / 13);
+}
+
+.background-wrap {
+  padding: var(--space-xs);
+  margin: calc(var(--space-xs) * -1);
+  background: var(--text-color-50);
 }
 
 a {
@@ -70,7 +75,6 @@ a {
   -webkit-text-fill-color: transparent;
   text-fill-color: transparent;
   -webkit-tap-highlight-color: transparent;
-
 }
 
 a:hover {
@@ -80,13 +84,25 @@ a:hover {
 input,
 button {
   font-family: inherit;
+  font-size: inherit;
   color: var(--text-color);
-  transition: box-shadow .2s ease;
+  padding: .6em 1em;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  transition: all .2s ease;
+}
+
+input svg path,
+button svg path {
+  fill: currentColor;
 }
 
 input:focus,
 button:focus {
+  border-color: var(--link-color);
   box-shadow: 0 0 0 .15em var(--link-color-20);
+  outline: none;
 }
 
 /*
