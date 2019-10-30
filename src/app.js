@@ -23,7 +23,7 @@ const search = instantsearch({
     attributesToSnippet: ['extended:40'],
   },
   routing: {
-    stateMapping: instantsearch.stateMappings.singleIndex('list')
+    stateMapping: instantsearch.stateMappings.singleIndex('list'),
   },
   searchClient,
 });
